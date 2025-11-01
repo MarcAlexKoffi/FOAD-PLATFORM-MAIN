@@ -1,147 +1,157 @@
-<div class="foad-requests" id="requestsRoot">
-  <div class="rq-wrapper">
-    <!-- Entête -->
-    <div class="rq-head">
-      <div>
+<div class="foad-page foad-demandes">
+  <main class="container">
+    <!-- Heading + CTA -->
+    <header class="page-head">
+      <div class="titles">
         <h1>Gestion des Demandes</h1>
         <p>Centralisez et suivez toutes les demandes de contenu.</p>
       </div>
-      <button class="btn-primary" type="button">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+      <button class="btn btn-primary">
+        <span class="mi" aria-hidden="true">add</span>
         Nouvelle demande
       </button>
-    </div>
+    </header>
 
-    <!-- Barre de recherche -->
-    <div class="rq-search">
-      <div class="search">
-        <span class="ico">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"/></svg>
-        </span>
-        <input type="text" placeholder="Rechercher par mot-clé, titre, ou demandeur…" />
+    <!-- Carte Recherche + Filtres -->
+    <section class="card card-filters">
+      <div class="input-search">
+        <span class="search-icon mi" aria-hidden="true">search</span>
+        <input type="text" placeholder="Rechercher par mot-clé, titre, ou demandeur…" aria-label="Rechercher" />
       </div>
 
-      <div class="rq-chips">
-        <button class="chip" type="button">
-          <span class="chip-label">Statut : <b>Tous</b></span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+      <div class="chips">
+        <button class="chip">
+          <span class="mi">rule</span>
+          Statut : <strong>Tous</strong>
+          <span class="mi">expand_more</span>
         </button>
-        <button class="chip" type="button">
-          <span class="chip-label">Type : <b>Tous</b></span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        <button class="chip">
+          <span class="mi">category</span>
+          Type : <strong>Tous</strong>
+          <span class="mi">expand_more</span>
         </button>
-        <button class="chip" type="button">
-          <span class="chip-label">Acteur : <b>Tous</b></span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        <button class="chip">
+          <span class="mi">person</span>
+          Acteur : <strong>Tous</strong>
+          <span class="mi">expand_more</span>
         </button>
-        <button class="chip" type="button">
-          <span class="chip-label">Période : <b>Tous</b></span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        <button class="chip">
+          <span class="mi">date_range</span>
+          Période : <strong>Tous</strong>
+          <span class="mi">expand_more</span>
         </button>
 
-        <button class="chip reset" type="button">
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 6V3L8 7l4 4V8c2.76 0 5 2.24 5 5a5 5 0 0 1-9.9 1H5.02a7 7 0 1 0 6.98-8z"/></svg>
+        <button class="chip chip-ghost ml-auto">
+          <span class="mi">refresh</span>
           Réinitialiser
         </button>
       </div>
-    </div>
+    </section>
 
     <!-- Tableau -->
-    <div class="rq-card">
+    <section class="card">
       <div class="table-wrap">
-        <table>
+        <table aria-label="Table des demandes">
           <thead>
             <tr>
-              <th style="width:48px;"><input class="cb" type="checkbox" /></th>
+              <th class="w-check">
+                <input type="checkbox" />
+              </th>
               <th>Titre de la demande</th>
               <th>Demandeur</th>
               <th>Statut</th>
               <th>Date de création</th>
               <th>Dernière mise à jour</th>
-              <th class="txt-right">Actions</th>
+              <th class="ta-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><input class="cb" type="checkbox" /></td>
-              <td class="title">Création du module « Marketing Digital »</td>
+              <td><input type="checkbox" /></td>
+              <td class="strong">Création du module « Marketing Digital »</td>
               <td class="muted">Jean Dupont</td>
               <td>
-                <span class="badge info"><i></i> En cours</span>
+                <span class="badge bdg-info">
+                  <span class="dot"></span> En cours
+                </span>
               </td>
               <td class="muted">15/10/2023</td>
               <td class="muted">18/10/2023</td>
-              <td class="txt-right"><button class="lnk">Voir</button></td>
+              <td class="ta-right"><button class="link">Voir</button></td>
             </tr>
 
             <tr>
-              <td><input class="cb" type="checkbox" /></td>
-              <td class="title">Mise à jour du cours « Introduction à la Finance »</td>
+              <td><input type="checkbox" /></td>
+              <td class="strong">Mise à jour du cours « Introduction à la Finance »</td>
               <td class="muted">Marie Curie</td>
               <td>
-                <span class="badge success"><i></i> Validé</span>
+                <span class="badge bdg-ok">
+                  <span class="dot"></span> Validé
+                </span>
               </td>
               <td class="muted">12/10/2023</td>
               <td class="muted">16/10/2023</td>
-              <td class="txt-right"><button class="lnk">Voir</button></td>
+              <td class="ta-right"><button class="link">Voir</button></td>
             </tr>
 
             <tr>
-              <td><input class="cb" type="checkbox" /></td>
-              <td class="title">Support technique pour la vidéo du module 3</td>
+              <td><input type="checkbox" /></td>
+              <td class="strong">Support technique pour la vidéo du module 3</td>
               <td class="muted">Pierre Martin</td>
               <td>
-                <span class="badge danger"><i></i> Rejeté</span>
+                <span class="badge bdg-ko">
+                  <span class="dot"></span> Rejeté
+                </span>
               </td>
               <td class="muted">11/10/2023</td>
               <td class="muted">12/10/2023</td>
-              <td class="txt-right"><button class="lnk">Voir</button></td>
+              <td class="ta-right"><button class="link">Voir</button></td>
             </tr>
 
             <tr>
-              <td><input class="cb" type="checkbox" /></td>
-              <td class="title">Création de QCM pour « Biologie Cellulaire »</td>
+              <td><input type="checkbox" /></td>
+              <td class="strong">Création de QCM pour « Biologie Cellulaire »</td>
               <td class="muted">Élise Lambert</td>
               <td>
-                <span class="badge wait"><i></i> En attente</span>
+                <span class="badge bdg-wait">
+                  <span class="dot"></span> En attente
+                </span>
               </td>
               <td class="muted">10/10/2023</td>
               <td class="muted">10/10/2023</td>
-              <td class="txt-right"><button class="lnk">Voir</button></td>
+              <td class="ta-right"><button class="link">Voir</button></td>
             </tr>
 
             <tr>
-              <td><input class="cb" type="checkbox" /></td>
-              <td class="title">Mise à jour des ressources du cours « Histoire de l’Art »</td>
+              <td><input type="checkbox" /></td>
+              <td class="strong">Mise à jour des ressources du cours « Histoire de l’Art »</td>
               <td class="muted">Lucas Moreau</td>
               <td>
-                <span class="badge success"><i></i> Validé</span>
+                <span class="badge bdg-ok">
+                  <span class="dot"></span> Validé
+                </span>
               </td>
               <td class="muted">08/10/2023</td>
               <td class="muted">11/10/2023</td>
-              <td class="txt-right"><button class="lnk">Voir</button></td>
+              <td class="ta-right"><button class="link">Voir</button></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- Pagination -->
-      <div class="pager">
-        <p class="muted small">Affiche <strong>1-5</strong> sur <strong>42</strong> demandes</p>
-        <div class="pages">
-          <button class="pg" aria-label="Précédent">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-          </button>
-          <button class="pg active">1</button>
-          <button class="pg">2</button>
-          <button class="pg">3</button>
+      <footer class="table-foot">
+        <p class="muted">Affiche <strong>1–5</strong> sur <strong>42</strong> demandes</p>
+        <nav class="pager">
+          <button class="btn-ico" aria-label="Page précédente"><span class="mi">chevron_left</span></button>
+          <button class="page current">1</button>
+          <button class="page">2</button>
+          <button class="page">3</button>
           <span class="muted">…</span>
-          <button class="pg">9</button>
-          <button class="pg" aria-label="Suivant">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+          <button class="page">9</button>
+          <button class="btn-ico" aria-label="Page suivante"><span class="mi">chevron_right</span></button>
+        </nav>
+      </footer>
+    </section>
+  </main>
 </div>
