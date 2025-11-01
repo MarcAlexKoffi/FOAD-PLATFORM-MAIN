@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display"
+  >
+    <div class="flex h-screen">
+      <aside
+        class="w-64 bg-white dark:bg-gray-800 flex flex-col p-4 border-r border-gray-200 dark:border-gray-700"
+      >
+        <div class="mb-10 px-2">
+          <h1 class="text-xl font-bold text-gray-900 dark:text-white">FOAD Platform</h1>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Administrateur</p>
+        </div>
+        <nav class="flex-grow">
+          <ul>
+            <li>
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium"
+                href="#"
+              >
+                <span class="material-icons-sharp">dashboard</span>
+                Tableau de bord
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="#"
+              >
+                <span class="material-icons-sharp">group</span>
+                Utilisateurs
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="#"
+              >
+                <span class="material-icons-sharp">folder_copy</span>
+                Toutes les demandes
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="#"
+              >
+                <span class="material-icons-sharp">school</span>
+                Tous les cours
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="#"
+              >
+                <span class="material-icons-sharp">analytics</span>
+                Analytiques
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="#"
+              >
+                <span class="material-icons-sharp">settings</span>
+                Paramètres
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
+            href="#"
+          >
+            <span class="material-icons-sharp">logout</span>
+            Déconnexion
+          </a>
+        </div>
+      </aside>
+      <div class="flex-1 flex flex-col">
+        <header
+          class="h-20 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center px-8"
+        >
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Tableau de bord</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Vue d'ensemble de la plateforme</p>
+          </div>
+          <div class="flex items-center gap-6">
+            <button class="relative text-gray-600 dark:text-gray-300">
+              <span class="material-icons-sharp">notifications</span>
+              <span
+                class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"
+              ></span>
+            </button>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg"
+              >
+                A
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Admin</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Administrateur</p>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main class="flex-1 overflow-y-auto p-8">
+        <router-outlet></router-outlet>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

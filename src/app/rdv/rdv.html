@@ -1,0 +1,127 @@
+<div class="foad-appointments" id="appointmentsRoot">
+  <div class="ap-wrapper">
+    <!-- Entête -->
+    <div class="ap-head">
+      <h1>Gestion des rendez-vous</h1>
+      <button class="btn-primary" type="button">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 11H13V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+        Créer un rendez-vous
+      </button>
+    </div>
+
+    <div class="ap-grid">
+      <!-- Colonne gauche -->
+      <aside class="ap-left">
+        <label class="search" aria-label="Rechercher">
+          <span class="ico">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"/></svg>
+          </span>
+          <input type="text" placeholder="Rechercher..." />
+        </label>
+
+        <div class="chips">
+          <button class="chip">Statut <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg></button>
+          <button class="chip">Participants <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg></button>
+        </div>
+
+        <!-- Calendrier -->
+        <section class="card calendar">
+          <div class="cal-head">
+            <button class="cal-nav" aria-label="Mois précédent">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <h3>Octobre 2023</h3>
+            <button class="cal-nav" aria-label="Mois suivant">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+            </button>
+          </div>
+
+          <div class="cal-grid cal-days">
+            <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
+          </div>
+
+          <div class="cal-grid cal-dates">
+            <span class="muted">24</span><span class="muted">25</span><span class="muted">26</span><span class="muted">27</span><span class="muted">28</span><span class="muted">29</span><span class="muted">30</span>
+            <button>1</button><button>2</button><button>3</button>
+            <button data-dot="success">4</button>
+            <button class="is-today" data-dot="white">5</button>
+            <button>6</button><button>7</button><button>8</button>
+            <button data-dot="danger">9</button>
+            <button>10</button><button>11</button><button>12</button>
+            <button>13</button><button>14</button><button data-dot="success">15</button>
+            <button>16</button><button>17</button><button>18</button><button>19</button>
+            <button>20</button><button>21</button><button>22</button>
+            <button data-dot="neutral">23</button>
+            <button>24</button><button>25</button><button>26</button>
+            <button>27</button><button>28</button><button>29</button><button>30</button>
+            <button>31</button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Colonne droite -->
+      <section class="ap-right">
+        <div class="tabs">
+          <button class="active">À venir</button>
+          <button>Passés</button>
+          <button>Annulés</button>
+        </div>
+
+        <div class="ap-list">
+          <!-- À venir -->
+          <article class="ap-card">
+            <div class="ap-row">
+              <div class="ap-date">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 16H5V8h14v11Z"/></svg>
+                <span>15 Octobre 2023 – 14:00</span>
+              </div>
+              <span class="badge upcoming"><i></i> À venir</span>
+              <div class="ap-actions">
+                <button class="icon-btn" aria-label="Modifier"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82Z"/></svg></button>
+                <button class="icon-btn" aria-label="Supprimer"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6 7h12v2H6V7Zm2 3h8l-1 10H9L8 10Zm3-6h2l1 1h4v2H6V5h4l1-1Z"/></svg></button>
+              </div>
+            </div>
+            <h3 class="ap-title">Point de suivi – Module C++</h3>
+            <div class="avatars">
+              <img alt="P1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6y3XoZ0Z98QQoURHS5t6_q0Tuor1XUvdV4cqokaLl9-KHxyQ3IWLHBc7ok2fd_9Qw_5JUloBXaDQLgOprhIFP94eZxL_TPGpqjG8lAkpi6qvSss2UtpWxNET7av9G_tvp6fsHNlNyUTy3eGZl46gxblRIAJsfkRw9mIbpDjw8vD6cRLU1I9BTWKXv-hQRJ1TuL6vT6YbDg-QM03GqCmsevR993RtCKWUzHM-R0LNEoCLaQG75OVuh4Jkz6s4kjPMwolHokVtsE6Sa" />
+              <img alt="P2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2stXVIrLpuWjBchQA84BtnDoXl-m7Jhv2n-CgLvbIzpfqGndT0qzwIVPzOGzsU7kc3XsMswg9HLCFBdrHsjSKOjA4KDJg0rp-03eDIO3gGEWAMiNmVaEOyKvwyCTuUO_SaffFUciMT7uY_bTfaGInisRepWLQYNO7FD79PpBdT1PaKy1j-315WCaLr2RA-6s2MQADZsywxN_6pQO_zRISvwe6yz60Eqfc03gIRG0kgVVk_c-YRJbd2DSixul39jBfon4KuwJddoVj" />
+              <img alt="P3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY8G7tmdu95ZoMs7xw9hWd7hRSMtJ-TyMA8wE1lPGYQyoEuYPVeMpgDEPSqpWUrzzSpgufO2aDWfZyyhqO8WYcYwEoDDfUCMqpgPgTBYOC1TUDaHPghm6TtMWhEA73N4hmRvqfu6qQ0EpZRDG7KF8Dzz1JmjsZDvyO7_cdHNl0qlBe6CuFmk9Yhr5Zdi5jNGzoIWuv_d-xmnP_MSRYfq0P7odALDVpap3WlO8KG87ZCFYZWb0d-sxUQWV9RN4Ux0Hq26l2YkY_igTh" />
+            </div>
+          </article>
+
+          <!-- Passé -->
+          <article class="ap-card faded">
+            <div class="ap-row">
+              <div class="ap-date muted">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 16H5V8h14v11Z"/></svg>
+                <span>23 Septembre 2023 – 10:30</span>
+              </div>
+              <span class="badge past"><i></i> Passé</span>
+            </div>
+            <h3 class="ap-title past">Validation du storyboard – Module Java</h3>
+            <div class="avatars">
+              <img alt="P1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRVzdSl8k682QXqoklDbnZGkKf903aK0oJzoVBs8cpwSkDgcDzwpAfCGArckr74VMYZDQXqJD7lox6bzEg3haJWUmRM6w3cIBbXE0lUDBYc9x0vGtE3Omte5whe1HY_hnYDadsPvjyOjQrcAQd6QiD0YfkiI5OfTPzDlTR7rK7kjIs_mGvROYZYlbhxqWqNpbDtJMP0mDBBrY4SP3TkqqoanKaFQv6uHOOdFUnbeEXv8O5-B1J_1M2ujuv4s_8dch011Qqbe9gjRnH" />
+              <img alt="P2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANV93-69CdluRJIs-wbgRuA4LkRWZFe2JIl-QXfrBSqGOUk8TN1m0Nj-EvvXTBfRG7J533xT2lOoqGTqR6SGPYlKvEmJTYZcwif8sQTBEdolspTL2UNam-q1ZUm0C9u6yiXbYvr8JXivCqvkiTRpgVgaDBZp_JIZv5Cx0J35qoBXqGttbH_nhxxaOroAA1aZ6Ue6_pOItxweuWP_uRF3EKM7xUW7vt4z_ZZ4XaM6hXriE2msWW7B2LBvGZxoX7l6ykGPEGaJmYzEK3" />
+            </div>
+          </article>
+
+          <!-- Annulé -->
+          <article class="ap-card faded">
+            <div class="ap-row">
+              <div class="ap-date muted">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 16H5V8h14v11Z"/></svg>
+                <span>09 Octobre 2023 – 09:00</span>
+              </div>
+              <span class="badge cancel"><i></i> Annulé</span>
+            </div>
+            <h3 class="ap-title cancel">Brainstorming nouvelle formation Python</h3>
+            <div class="avatars">
+              <img alt="P1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY2DLz7z5wklT70q2efFuGzqPpZfmZ1eelo-DSt7KHLe1u42L3ovCc9TspxN1gyHZxYkOmdr4qHJzciRHhD5_GrbEXtFUerAwMrg_ZUjl9sgfxJjwzgB6IPez78sKCqmeL-HXIIJRBpp8jK3s9679bk_xrtX1o1LUrvT92ovP2Ix83PpgR6lZK1KLYrU1q4K4ycKrZ1FT1xdyFOM9d6v0woMVk9ADdPXFNxWIZnTYnnCkm28qmPl0MBwOZYLJl4cR17EN2bMdtacGH" />
+              <img alt="P2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuComo4ZVeUrjIIJZs-0XfCaLUGVWke1i6rIdhHhd1lyZLEOmo0uEM3uJorwKYTvhxYYvbUQlbrW8nZzXE5BnOCEHuUyEK-ivRip2HebQlr-kjInZzheVi0jAafm5LMZlJReGJmEG2mgNJkRfABHmQfrmKoYzhoqarnyMBmKlEDYkj-s30aUOzvCsbIA1qyzP8D_As-S502Dq9X7OO23eA7E8kmTtj9XG0FW_SaWswORu_KkGSLJoLwwIDZPyfgsweXLwgFd4YX0nNNN" />
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

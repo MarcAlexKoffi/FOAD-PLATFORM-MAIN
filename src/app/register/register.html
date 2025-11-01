@@ -1,0 +1,95 @@
+<body>
+  <div class="container">
+    <!-- Partie gauche -->
+    <div class="left-side">
+      <div class="logo">
+        <!-- Icône chapeau SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="white">
+          <path d="M622.3 153.2 343.4 44.9a80.6 80.6 0 0 0-46.8 0L17.7 153.2c-23.6 8.9-23.6 39.5 0 48.4L88 226.3c-1.1 5.5-1.8 11.2-1.8 17 0 63.9 64.5 115.8 160 130.8V448h-64c-17.7 0-32 14.3-32 32s14.3 32 32 32h192c17.7 0 32-14.3 32-32s-14.3-32-32-32h-64v-73.9c95.5-15 160-66.9 160-130.8 0-5.8-.7-11.5-1.8-17l70.3-24.7c23.6-8.9 23.6-39.5 0-48.4zM320 288c-88.4 0-160-35.8-160-80s71.6-80 160-80 160 35.8 160 80-71.6 80-160 80z"/>
+        </svg>
+        <span>FOAD Platform</span>
+      </div>
+
+      <div class="intro">
+        <h1>Rejoignez la plateforme FOAD</h1>
+        <p>Créez votre compte et commencez à collaborer avec votre équipe pédagogique dès aujourd'hui.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 448 512">
+            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-224 224c-12.5 12.5-32.8 12.5-45.3 0l-96-96c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 306.7l201.4-201.3c12.5-12.5 32.8-12.5 45.2 0z"/>
+          </svg>
+          <div>
+            <h3>Gestion des demandes</h3>
+            <p>Créez et suivez vos demandes</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 448 512">
+            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-224 224c-12.5 12.5-32.8 12.5-45.3 0l-96-96c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 306.7l201.4-201.3c12.5-12.5 32.8-12.5 45.2 0z"/>
+          </svg>
+          <div>
+            <h3>Planification</h3>
+            <p>Organisez vos rendez-vous</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partie droite -->
+    <div class="right-side">
+      <div class="form-box">
+        <h2>Créer un compte</h2>
+        <p class="subtitle">Remplissez le formulaire pour rejoindre la plateforme</p>
+
+        <form id="registerForm">
+          <div class="name-fields">
+            <div>
+              <label>Prénom</label>
+              <input type="text" id="prenom" placeholder="Jean" required>
+            </div>
+            <div>
+              <label>Nom</label>
+              <input type="text" id="nom" placeholder="Dupont" required>
+            </div>
+          </div>
+
+          <label>Adresse email</label>
+          <input type="email" id="email" placeholder="nom@example.com" required>
+
+          <label>Profil utilisateur</label>
+          <select id="profil" required>
+            <option value="">Sélectionnez votre profil</option>
+            <option value="enseignant">Enseignant</option>
+            <option value="concepteur">Concepteur</option>
+            <option value="admin">Administrateur</option>
+          </select>
+
+          <label>Mot de passe</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+
+          <label>Confirmer le mot de passe</label>
+          <input type="password" id="confirmPassword" placeholder="••••••••" required>
+
+          <button type="submit">Créer mon compte</button>
+        </form>
+
+        <p class="login-link">Vous avez déjà un compte ? <a href="login.html">Se connecter</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pwd = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      if (pwd !== confirm) {
+        alert("Les mots de passe ne correspondent pas.");
+        return;
+      }
+      alert("Compte créé avec succès !");
+    });
+  </script>

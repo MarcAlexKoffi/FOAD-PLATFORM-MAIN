@@ -1,0 +1,120 @@
+<div class="messages-page">
+  <!-- En-tête de page -->
+  <div class="page-header">
+    <div>
+      <h1>Messagerie</h1>
+      <p class="muted">Discutez avec les enseignants, concepteurs et admins au même endroit.</p>
+    </div>
+
+    <button class="btn-primary" type="button">
+      <span class="material-icons-sharp">add</span>
+      Nouveau message
+    </button>
+  </div>
+
+  <!-- Corps -->
+  <div class="page-body">
+    <!-- Liste des conversations -->
+    <aside class="thread-list" aria-label="Conversations">
+      <label class="searchbar" role="search">
+        <span class="material-icons-sharp">search</span>
+        <input type="text" placeholder="Rechercher une conversation..." />
+      </label>
+
+      <div class="conv-item active">
+        <div class="avatar" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxHH0vmSlKv5gBBI4kluOxKQmYyxw2ajPQmQpbHLal6sed9Gh2VYQLx-puYEpQ3TbwWVKdtK9b3joowy9EKimZsgDXnppXaOaOVd7pP2c-gbhkfYRGGRLgH2P_QonihSdCNsrX87fXnPFe1aFdR1A-DtJijCTW595R6sv7cFUj0aJ56MHFpBLoroM6V__CcKyFinUEqa8jyW0QgHe4h44BOITaq0IN6W6WOyi-avLksCGBTJWx5cHgTKNQwZDzzxBOU1b2Te57wMWt');"></div>
+        <div class="meta">
+          <div class="row">
+            <p class="title">Demande #123</p>
+            <span class="time">10:42</span>
+          </div>
+          <div class="row">
+            <p class="last muted">Élodie&nbsp;: D'accord, je regarde ça…</p>
+            <span class="badge">2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="conv-item">
+        <div class="avatar" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsXBSLuWJWDCX5ea3JLpz8wBW7X-pUWfIxQYFfOcXdItshI5QJw8mi1Z9BJUUWLEOXgpgSquo5LGIXkDe_2nwbn6GyIK4CY29vbSskVGl0IU_ZhxEmXAv7GHEzyMn1TZyaFnJZvoeFkHKRMtaMozyEc7BzA1ZQ_zJnCZTzgD729-u5nHwGEuhW8iFPGzrmme_2qhSRgRje6v-IvrOqo55rOuhANJ5V2G1oZrjWsVxhw_29b9KC6dwrCNZu1m_U4U6DCgFlTPYjoTig');"></div>
+        <div class="meta">
+          <div class="row">
+            <p class="title">Module “Maths 101”</p>
+            <span class="time">Hier</span>
+          </div>
+          <p class="last muted">Vous&nbsp;: Le syllabus est en pièce jointe.</p>
+        </div>
+      </div>
+
+      <div class="conv-item">
+        <div class="avatar" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXylE752b4hnhkvOJ9RinU_AqHagOwdhf6AEfM4SRKIT9tMCyieltH0L2y5cZXRS3igb-8_AnQww7UCoprnRn1ZU_49HlnAri_nOkRfbhJcMbTCziv7f8Xc5XU80TT6orjFnVjZvaOYvYpiMNfBpveKQjpIv6yQJ8Ujc9AFsx94L5_yd7awVsiWVYAgPxXA59MVi-IBtlxmIduXwgpXO0fQFWSUR5mp-k2Vf1-P0RtGdpQzioEmMxysHQsHfIEa_qnaVaiAH5ceYCm');"></div>
+        <div class="meta">
+          <div class="row">
+            <p class="title">Demande #121</p>
+            <span class="time">2 j</span>
+          </div>
+          <p class="last muted">Lucas Moreau&nbsp;: C’est validé de mon côté.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Fil de discussion -->
+    <section class="thread" aria-label="Fil de discussion">
+      <header class="thread-header">
+        <div class="left">
+          <div class="avatar sm" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRu58VQNuwP0EMvfA9sVn4LQCWQin81hDNQuIFlE5aAjewvyz9bfkB-k5Wu0pKYFLJcDBwQnALWE2qPFIkg6AH9hFPLextj7u6c0Dpqhmu5fzwFu7g1J7K6D9SB1zO6pwJpApU2S9lNB2o0zUjPFh_j5vnXlRvD2jdYpXIte24VhL_9x4ZvFM1_h2RzkmnVwulahx2OYvIGzA45YnNCHGxBg32-6M573JNP5k-l7kJKIMf2J7rPyW317dnZrCqeqAeTdo9nRjRy4Fz');"></div>
+          <div>
+            <h2>Élodie Martin</h2>
+            <a href="#" class="context">Contexte&nbsp;: Demande #123</a>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="icon-btn" type="button" aria-label="Appel"><span class="material-icons-sharp">call</span></button>
+          <button class="icon-btn" type="button" aria-label="Visio"><span class="material-icons-sharp">videocam</span></button>
+          <button class="icon-btn" type="button" aria-label="Plus"><span class="material-icons-sharp">more_vert</span></button>
+        </div>
+      </header>
+
+      <div class="thread-messages">
+        <!-- Reçu -->
+        <div class="msg-row">
+          <div class="avatar sm" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDa6g4A2nKLqlA_6AtSVpbd7tXrj0h9bq3THZrBsq8XRdfoudBuNqFt29nEuPA6fqA8pr91rNeftpc1AZtVJa7iPx7Vh7JFYxmkS7MoBfvkI1FsiKQv_QlzzULHmpNPuXSE6YKSouXR-FF4Cu2P6THFey-akWl4ICA9JbsiE0TonAHrZit4KWj_BkiK8U8Nl06aiWsKw_pBJNdLjDiNK62T0f_rCDnXW34j8RBa_e5l8PoMr-IGKx1PA6cGbt531c2AK5yMkpdZoUSZ');"></div>
+          <div class="bubble in">
+            <div class="meta-row"><b>Élodie</b><span class="time">10:40</span></div>
+            <p>Bonjour Jean, j’ai bien reçu la demande pour la création de QCM interactifs. Est-ce que tu as déjà les questions prêtes&nbsp;?</p>
+          </div>
+        </div>
+
+        <!-- Envoyé -->
+        <div class="msg-row me">
+          <div class="avatar sm" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBR7fRgeRrCHDwWIxpVkgXaImNAJHTUDVn9bkFjJSxma4JJQF6wXSjteZDYPCVr7KmiLzlyQuPC-WKEq9AaCoB8HSsxRBAhRB8P0_OPvRs6ehr7MTqOwDrHhwPZwerRIwgx4hxWZKi3MWiXXaUgId4y6PeyXAzeyWsIndQFcONYauJdPv5JTeTkc9Bdck0mQlHqa8RMAXFdIscMOoq1VKZmInlaK8moRSTJqXKoUNbwstGcLEP-UoWdFTcoJTrEW7X7XMe-193QhtGG');"></div>
+          <div class="bubble out">
+            <div class="meta-row"><b>Vous</b><span class="time">10:41</span></div>
+            <p>Salut Élodie, oui tout à fait. Je te joins le document avec la première série de questions.</p>
+            <div class="attachment">
+              <span class="material-icons-sharp">description</span>
+              <span>questions_qcm_v1.docx</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reçu -->
+        <div class="msg-row">
+          <div class="avatar sm" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPBaieGO6QfnLkUvph3gZFkGPSRuYQUvii7dwOUdVrc4nKZmrhSpcyZc1JSDdojDgedQT-u6dQA1ROMwu492PHwOnMMXa0FBsInvHxk4-K1_b47IFP1lmsBZ83Nps7auV2Yh-64QvcSKv_8HSluqTyyZj1V4sfWyMoJCvHCSN4Ud2pz6cX_bCrBDObrOR_qAKSnwCg3yaE8mmPyHSH-xcgAk5UTPUXrcvJtoi45lGoJsS1mOR0JDLqNOa29shkWAnKvs1yFFdaYU3D');"></div>
+          <div class="bubble in">
+            <div class="meta-row"><b>Élodie</b><span class="time">10:42</span></div>
+            <p>Parfait, merci beaucoup&nbsp;! D’accord, je regarde ça tout de suite et je te fais un retour dans la journée.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <form class="composer">
+        <button class="icon-btn" type="button" aria-label="Image"><span class="material-icons-sharp">add_photo_alternate</span></button>
+        <button class="icon-btn" type="button" aria-label="Fichier"><span class="material-icons-sharp">attach_file</span></button>
+        <textarea rows="1" placeholder="Écrivez votre message ici…"></textarea>
+        <button class="send" type="submit"><span class="material-icons-sharp">send</span></button>
+      </form>
+    </section>
+  </div>
+</div>
