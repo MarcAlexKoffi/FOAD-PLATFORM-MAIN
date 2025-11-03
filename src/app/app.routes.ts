@@ -71,7 +71,7 @@ export const routes: Routes = [
         component: Messages
       },
       {
-        path: 'detail-demandes',
+        path: 'detaildemandes',
         component: DetailDemandes
       }
     ]
@@ -79,5 +79,9 @@ export const routes: Routes = [
   {
     path: 'teacherlayout',
     component: TeacherLayout,
-  }
+  },
+   {
+        path: 'detaildemandes',
+        component: DetailDemandes
+      }
 ];

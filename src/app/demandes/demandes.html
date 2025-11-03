@@ -16,7 +16,7 @@
     <section class="card card-filters">
       <div class="input-search">
         <span class="search-icon mi" aria-hidden="true">search</span>
-        <input type="text" placeholder="Rechercher par mot-clé, titre, ou demandeur…" aria-label="Rechercher" />
+        <input type="text" placeholder="Rechercher par mot-clé, titre, ou demandeur…" [(ngModel)]="searchTerm"  aria-label="Rechercher" />
       </div>
 
       <div class="chips">
@@ -66,75 +66,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="strong">Création du module « Marketing Digital »</td>
-              <td class="muted">Jean Dupont</td>
-              <td>
-                <span class="badge bdg-info">
-                  <span class="dot"></span> En cours
-                </span>
-              </td>
-              <td class="muted">15/10/2023</td>
-              <td class="muted">18/10/2023</td>
-              <td class="ta-right"><button class="link"><a [routerLink]="'creatorlayout/detaildemandes'">Voir</a></button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="strong">Mise à jour du cours « Introduction à la Finance »</td>
-              <td class="muted">Marie Curie</td>
-              <td>
-                <span class="badge bdg-ok">
-                  <span class="dot"></span> Validé
-                </span>
-              </td>
-              <td class="muted">12/10/2023</td>
-              <td class="muted">16/10/2023</td>
-              <td class="ta-right"><button class="link">Voir</button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="strong">Support technique pour la vidéo du module 3</td>
-              <td class="muted">Pierre Martin</td>
-              <td>
-                <span class="badge bdg-ko">
-                  <span class="dot"></span> Rejeté
-                </span>
-              </td>
-              <td class="muted">11/10/2023</td>
-              <td class="muted">12/10/2023</td>
-              <td class="ta-right"><button class="link">Voir</button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="strong">Création de QCM pour « Biologie Cellulaire »</td>
-              <td class="muted">Élise Lambert</td>
-              <td>
-                <span class="badge bdg-wait">
-                  <span class="dot"></span> En attente
-                </span>
-              </td>
-              <td class="muted">10/10/2023</td>
-              <td class="muted">10/10/2023</td>
-              <td class="ta-right"><button class="link">Voir</button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td class="strong">Mise à jour des ressources du cours « Histoire de l’Art »</td>
-              <td class="muted">Lucas Moreau</td>
-              <td>
-                <span class="badge bdg-ok">
-                  <span class="dot"></span> Validé
-                </span>
-              </td>
-              <td class="muted">08/10/2023</td>
-              <td class="muted">11/10/2023</td>
-              <td class="ta-right"><button class="link">Voir</button></td>
-            </tr>
+            <tr *ngFor="let d of filteredDemandes">
+    <td><input type="checkbox" /></td>
+    <td class="strong">{{ d.titre }}</td>
+    <td class="muted">{{ d.demandeur }}</td>
+    <td>
+      <span class="badge"
+            [ngClass]="{
+              'bdg-info': d.statut === 'En cours',
+              'bdg-ok': d.statut === 'Validé',
+              'bdg-ko': d.statut === 'Rejeté',
+              'bdg-wait': d.statut === 'En attente'
+            }">
+        <span class="dot"></span> {{ d.statut }}
+      </span>
+    </td>
+    <td class="muted">{{ d.dateCreation }}</td>
+    <td class="muted">{{ d.dateMAJ }}</td>
+    <td class="ta-right">
+      <button class="link" [routerLink]="['/creatorlayout/demandes', d.id]">Voir</button>
+    </td>
+  </tr>
           </tbody>
         </table>
       </div>
