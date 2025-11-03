@@ -10,6 +10,7 @@ import { Demandes } from './demandes/demandes';
 import { CreatorMain } from './creator-main/creator-main';
 import { Rdv } from './rdv/rdv';
 import { Messages } from './messages/messages';
+import { DetailDemandes } from './detail-demandes/detail-demandes';
 
 export const routes: Routes = [
   {
@@ -68,6 +69,10 @@ export const routes: Routes = [
       {
         path: 'messages',
         component: Messages
+      },
+      {
+        path: 'detail-demandes',
+        component: DetailDemandes
       }
     ]
   },
