@@ -41,28 +41,36 @@
 
         <!-- Calendrier (statique démo) -->
         <section class="card calendar">
-          <header class="cal-head">
-            <button class="btn-ico" aria-label="Précédent"><span class="mi">chevron_left</span></button>
-            <h3>Octobre 2023</h3>
-            <button class="btn-ico" aria-label="Suivant"><span class="mi">chevron_right</span></button>
-          </header>
+  <header class="cal-head">
+    <button class="btn-ico" aria-label="Précédent" (click)="prevMonth()"><span class="mi">chevron_left</span></button>
+    <h3>{{ monthLabel | titlecase }}</h3>
+    <button class="btn-ico" aria-label="Suivant" (click)="nextMonth()"><span class="mi">chevron_right</span></button>
+  </header>
 
-          <div class="cal-grid cal-days">
-            <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
-          </div>
+  <div class="cal-grid cal-days">
+    <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
+  </div>
 
-          <div class="cal-grid cal-dates">
-            <span class="muted">24</span><span class="muted">25</span><span class="muted">26</span><span class="muted">27</span><span class="muted">28</span><span class="muted">29</span><span class="muted">30</span>
-            <button>1</button><button>2</button><button>3</button>
-            <button class="has-dot dot-green">4</button>
-            <button class="current has-dot dot-white">5</button>
-            <button>6</button><button>7</button>
-            <button>8</button><button class="has-dot dot-rose">9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button>
-            <button class="has-dot dot-green">15</button><button>16</button><button>17</button><button>18</button><button>19</button><button>20</button><button>21</button>
-            <button>22</button><button class="has-dot">23</button><button>24</button><button>25</button><button>26</button><button>27</button><button>28</button>
-            <button>29</button><button>30</button><button>31</button>
-          </div>
-        </section>
+  <div class="cal-grid cal-dates">
+    <ng-container *ngFor="let day of daysInMonth">
+      <span *ngIf="day === 0"></span>
+     <button
+  *ngIf="day !== 0"
+  (click)="selectDate(day)"
+  [class.current]="selectedDate?.getDate() === day &&
+                   selectedDate?.getMonth() === currentMonth &&
+                   selectedDate?.getFullYear() === currentYear"
+  [class.today]="day === today.getDate() &&
+                 currentMonth === today.getMonth() &&
+                 currentYear === today.getFullYear()"
+  [class.has-dot]="getEventsForDay(day).length > 0">
+  {{ day }}
+</button>
+
+    </ng-container>
+  </div>
+</section>
+
       </aside>
 
       <!-- Colonne droite : cartes RDV -->

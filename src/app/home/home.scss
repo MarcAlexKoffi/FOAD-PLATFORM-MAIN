@@ -106,3 +106,10 @@
       .cards { grid-template-columns: repeat(3, 1fr); }
       .foot-row { flex-direction: row; justify-content: space-between; align-items: center; }
     }
+    .hero-media {
+  width: 100%;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
