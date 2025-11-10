@@ -3,10 +3,17 @@
     <!-- Heading + CTA -->
     <header class="page-head">
       <h1>Gestion des rendez-vous</h1>
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="openRdvForm()">
         <span class="mi">add</span>
         Créer un rendez-vous
       </button>
+
+      <!-- Modal formulaire -->
+      <app-rdv-form
+        *ngIf="showForm"
+        [initialDate]="selectedDate"
+        (formClosed)="closeRdvForm($event)">
+      </app-rdv-form>
     </header>
 
     <!-- Tabs -->
@@ -39,92 +46,109 @@
           </button>
         </div>
 
-        <!-- Calendrier (statique démo) -->
+        <!-- Calendrier -->
         <section class="card calendar">
-  <header class="cal-head">
-    <button class="btn-ico" aria-label="Précédent" (click)="prevMonth()"><span class="mi">chevron_left</span></button>
-    <h3>{{ monthLabel | titlecase }}</h3>
-    <button class="btn-ico" aria-label="Suivant" (click)="nextMonth()"><span class="mi">chevron_right</span></button>
-  </header>
+          <header class="cal-head">
+            <button class="btn-ico" aria-label="Précédent" (click)="prevMonth()">
+              <span class="mi">chevron_left</span>
+            </button>
+            <h3>{{ monthLabel | titlecase }}</h3>
+            <button class="btn-ico" aria-label="Suivant" (click)="nextMonth()">
+              <span class="mi">chevron_right</span>
+            </button>
+          </header>
 
-  <div class="cal-grid cal-days">
-    <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
-  </div>
+          <div class="cal-grid cal-days">
+            <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
+          </div>
 
-  <div class="cal-grid cal-dates">
-    <ng-container *ngFor="let day of daysInMonth">
-      <span *ngIf="day === 0"></span>
-     <button
-  *ngIf="day !== 0"
-  (click)="selectDate(day)"
-  [class.current]="selectedDate?.getDate() === day &&
-                   selectedDate?.getMonth() === currentMonth &&
-                   selectedDate?.getFullYear() === currentYear"
-  [class.today]="day === today.getDate() &&
-                 currentMonth === today.getMonth() &&
-                 currentYear === today.getFullYear()"
-  [class.has-dot]="getEventsForDay(day).length > 0">
-  {{ day }}
-</button>
+          <div class="cal-grid cal-dates">
+            <ng-container *ngFor="let day of daysInMonth">
+              <!-- cases vides -->
+              <span *ngIf="day === 0"></span>
 
-    </ng-container>
-  </div>
-</section>
-
+              <!-- jours -->
+              <button
+                *ngIf="day !== 0"
+                (click)="selectDate(day)"
+                [class.current]="selectedDate?.getDate() === day &&
+                                 selectedDate?.getMonth() === currentMonth &&
+                                 selectedDate?.getFullYear() === currentYear"
+                [class.today]="day === today.getDate() &&
+                               currentMonth === today.getMonth() &&
+                               currentYear === today.getFullYear()"
+                [class.has-dot]="getEventsForDay(day).length > 0"
+                title="Cliquer pour sélectionner la date">
+                {{ day }}
+              </button>
+            </ng-container>
+          </div>
+        </section>
       </aside>
 
-      <!-- Colonne droite : cartes RDV -->
+      <!-- Colonne droite : cartes RDV (dynamiques) -->
       <section class="right">
-        <!-- RDV à venir -->
-        <article class="card rdv">
-          <div class="rdv-row">
-            <div class="row-left">
-              <span class="mi muted">calendar_today</span>
-              <span class="meta">15 Octobre 2023 — 14:00</span>
+        <!-- À venir -->
+        <ng-container *ngIf="upcoming().length; else noUpcoming">
+          <article class="card rdv" *ngFor="let a of upcoming()">
+            <div class="rdv-row">
+              <div class="row-left">
+                <span class="mi muted">calendar_today</span>
+                <!-- DATE-HEURE visible -->
+                <span class="meta">{{ a.dateHeure | date:'d MMMM y — HH:mm':'':'fr' }}</span>
+              </div>
+              <span class="pill pill-up"><span class="dot"></span> À venir</span>
+              <div class="row-actions">
+                <button class="btn-ico" title="Modifier"><span class="mi">edit</span></button>
+                <button class="btn-ico" title="Supprimer" (click)="remove(a.id)"><span class="mi">delete</span></button>
+              </div>
             </div>
-            <span class="pill pill-up"><span class="dot"></span> À venir</span>
-            <div class="row-actions">
-              <button class="btn-ico"><span class="mi">edit</span></button>
-              <button class="btn-ico"><span class="mi">delete</span></button>
-            </div>
-          </div>
-          <h3>Point de suivi — Module C++</h3>
-          <div class="avatars">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6y3XoZ0Z98QQoURHS5t6_q0Tuor1XUvdV4cqokaLl9-KHxyQ3IWLHBc7ok2fd_9Qw_5JUloBXaDQLgOprhIFP94eZxL_TPGpqjG8lAkpi6qvSss2UtpWxNET7av9G_tvp6fsHNlNyUTy3eGZl46gxblRIAJsfkRw9mIbpDjw8vD6cRLU1I9BTWKXv-hQRJ1TuL6vT6YbDg-QM03GqCmsevR993RtCKWUzHM-R0LNEoCLaQG75OVuh4Jkz6s4kjPMwolHokVtsE6Sa" alt="">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2stXVIrLpuWjBchQA84BtnDoXl-m7Jhv2n-CgLvbIzpfqGndT0qzwIVPzOGzsU7kc3XsMswg9HLCFBdrHsjSKOjA4KDJg0rp-03eDIO3gGEWAMiNmVaEOyKvwyCTuUO_SaffFUciMT7uY_bTfaGInisRepWLQYNO7FD79PpBdT1PaKy1j-315WCaLr2RA-6s2MQADZsywxN_6pQO_zRISvwe6yz60Eqfc03gIRG0kgVVk_c-YRJbd2DSixul39jBfon4KuwJddoVj" alt="">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY8G7tmdu95ZoMs7xw9hWd7hRSMtJ-TyMA8wE1lPGYQyoEuYPVeMpgDEPSqpWUrzzSpgufO2aDWfZyyhqO8WYcYwEoDDfUCMqpgPgTBYOC1TUDaHPghm6TtMWhEA73N4hmRvqfu6qQ0EpZRDG7KF8Dzz1JmjsZDvyO7_cdHNl0qlBe6CuFmk9Yhr5Zdi5jNGzoIWuv_d-xmnP_MSRYfq0P7odALDVpap3WlO8KG87ZCFYZWb0d-sxUQWV9RN4Ux0Hq26l2YkY_igTh" alt="">
-          </div>
-        </article>
 
-        <!-- RDV passé -->
-        <article class="card rdv is-dim">
+            <!-- OBJET visible -->
+            <h3>{{ a.objet || '—' }}</h3>
+
+            <div class="avatars">
+              <img src="https://i.pravatar.cc/40?img=1" alt="">
+              <img src="https://i.pravatar.cc/40?img=2" alt="">
+              <img src="https://i.pravatar.cc/40?img=3" alt="">
+            </div>
+          </article>
+        </ng-container>
+        <ng-template #noUpcoming>
+          <article class="card rdv is-dim">
+            <h3 class="muted">Aucun rendez-vous à venir</h3>
+          </article>
+        </ng-template>
+
+        <!-- Passés -->
+        <article class="card rdv is-dim" *ngFor="let a of past()">
           <div class="rdv-row">
             <div class="row-left">
               <span class="mi muted">calendar_today</span>
-              <span class="meta">23 Septembre 2023 — 10:30</span>
+              <span class="meta">{{ a.dateHeure | date:'d MMMM y — HH:mm':'':'fr' }}</span>
             </div>
             <span class="pill pill-past"><span class="dot"></span> Passé</span>
           </div>
-          <h3 class="muted">Validation du storyboard — Module Java</h3>
+          <h3 class="muted">{{ a.objet || '—' }}</h3>
           <div class="avatars">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRVzdSl8k682QXqoklDbnZGkKf903aK0oJzoVBs8cpwSkDgcDzwpAfCGArckr74VMYZDQXqJD7lox6bzEg3haJWUmRM6w3cIBbXE0lUDBYc9x0vGtE3Omte5whe1HY_hnYDadsPvjyOjQrcAQd6QiD0YfkiI5OfTPzDlTR7rK7kjIs_mGvROYZYlbhxqWqNpbDtJMP0mDBBrY4SP3TkqqoanKaFQv6uHOOdFUnbeEXv8O5-B1J_1M2ujuv4s_8dch011Qqbe9gjRnH" alt="">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuANV93-69CdluRJIs-wbgRuA4LkRWZFe2JIl-QXfrBSqGOUk8TN1m0Nj-EvvXTBfRG7J533xT2lOoqGTqR6SGPYlKvEmJTYZcwif8sQTBEdolspTL2UNam-q1ZUm0C9u6yiXbYvr8JXivCqvkiTRpgVgaDBZp_JIZv5Cx0J35qoBXqGttbH_nhxxaOroAA1aZ6Ue6_pOItxweuWP_uRF3EKM7xUW7vt4z_ZZ4XaM6hXriE2msWW7B2LBvGZxoX7l6ykGPEGaJmYzEK3" alt="">
+            <img src="https://i.pravatar.cc/40?img=4" alt="">
+            <img src="https://i.pravatar.cc/40?img=5" alt="">
           </div>
         </article>
 
-        <!-- RDV annulé -->
-        <article class="card rdv is-dim">
+        <!-- Annulés -->
+        <article class="card rdv is-dim" *ngFor="let a of cancelled()">
           <div class="rdv-row">
             <div class="row-left">
               <span class="mi muted">calendar_today</span>
-              <span class="meta">09 Octobre 2023 — 09:00</span>
+              <span class="meta">{{ a.dateHeure | date:'d MMMM y — HH:mm':'':'fr' }}</span>
             </div>
             <span class="pill pill-cancel"><span class="dot"></span> Annulé</span>
           </div>
-          <h3 class="muted strike">Brainstorming nouvelle formation Python</h3>
+          <h3 class="muted strike">{{ a.objet || '—' }}</h3>
           <div class="avatars">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY2DLz7z5wklT70q2efFuGzqPpZfmZ1eelo-DSt7KHLe1u42L3ovCc9TspxN1gyHZxYkOmdr4qHJzciRHhD5_GrbEXtFUerAwMrg_ZUjl9sgfxJjwzgB6IPez78sKCqmeL-HXIIJRBpp8jK3s9679bk_xrtX1o1LUrvT92ovP2Ix83PpgR6lZK1KLYrU1q4K4ycKrZ1FT1xdyFOM9d6v0woMVk9ADdPXFNxWIZnTYnnCkm28qmPl0MBwOZYLJl4cR17EN2bMdtacGH" alt="">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuComo4ZVeUrjIIJZs-0XfCaLUGVWke1i6rIdhHhd1lyZLEOmo0uEM3uJorwKYTvhxYYvbUQlbrW8nZzXE5BnOCEHuUyEK-ivRip2HebQlr-kjInZzheVi0jAafm5LMZlJReGJmEG2mgNJkRfABHmQfrmKoYzhoqarnyMBmKlEDYkj-s30aUOzvCsbIA1qyzP8D_As-S502Dq9X7OO23eA7E8kmTtj9XG0FW_SaWswORu_KkGSLJoLwwIDZPyfgsweXLwgFd4YX0nNNN" alt="">
+            <img src="https://i.pravatar.cc/40?img=6" alt="">
+            <img src="https://i.pravatar.cc/40?img=7" alt="">
           </div>
         </article>
       </section>

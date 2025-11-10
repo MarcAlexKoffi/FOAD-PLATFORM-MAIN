@@ -1,0 +1,53 @@
+<!-- on conserve ta structure/classe pour que le SCSS existant s’applique -->
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h2>Créer un rendez-vous</h2>
+
+    <button type="button" class="close-button" (click)="closeForm()" aria-label="Fermer">
+      <span class="material-icons">close</span>
+    </button>
+
+    <form [formGroup]="rdvForm" (ngSubmit)="submit()">
+      <label>Objet *</label>
+      <input type="text" formControlName="objet" />
+
+      <label>Date et heure *</label>
+      <input type="datetime-local" formControlName="dateHeure" />
+
+      <label>Lieu</label>
+      <input type="text" formControlName="lieu" />
+
+      <label>Statut</label>
+      <select formControlName="statut">
+        <option value="Proposé">Proposé</option>
+        <option value="Confirmé">Confirmé</option>
+        <option value="Annulé">Annulé</option>
+      </select>
+
+      <label>Participants *</label>
+      <select formControlName="participants">
+        <option value="1">Alexandre Dumas</option>
+        <option value="2">Marie Curie</option>
+        <option value="3">Ada Lovelace</option>
+      </select>
+
+      <label>Lier à une demande</label>
+      <select formControlName="demandeLiee">
+        <option value="">—</option>
+        <option value="101">Demande #101</option>
+        <option value="102">Demande #102</option>
+      </select>
+
+      <label>Description</label>
+      <textarea rows="4" formControlName="description"></textarea>
+
+      <label>Pièce jointe</label>
+      <input type="file" (change)="handleFileInput($event)" />
+
+      <div class="actions">
+        <button type="button" (click)="cancel()">Annuler</button>
+        <button type="submit" [disabled]="rdvForm.invalid">Créer</button>
+      </div>
+    </form>
+  </div>
+</div>

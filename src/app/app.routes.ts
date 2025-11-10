@@ -11,6 +11,7 @@ import { CreatorMain } from './creator-main/creator-main';
 import { Rdv } from './rdv/rdv';
 import { Messages } from './messages/messages';
 import { DetailDemandes } from './detail-demandes/detail-demandes';
+import { RdvForm } from './rdv-form/rdv-form';
 
 export const routes: Routes = [
   {
@@ -80,8 +81,12 @@ export const routes: Routes = [
     path: 'teacherlayout',
     component: TeacherLayout,
   },
-   {
-        path: 'detaildemandes',
-        component: DetailDemandes
-      }
+  {
+    path: 'detaildemandes',
+    component: DetailDemandes
+  },
+  {
+    path: 'rdvform',
+    component: RdvForm
+  }
 ];
